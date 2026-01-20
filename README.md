@@ -8,8 +8,8 @@ Permet de lister, sauvegarder, tuer et restaurer des sessions Claude Code active
 
 1. Cloner le repository :
 ```bash
-git clone https://github.com/votre-username/claude-session.git
-cd claude-session
+git clone https://github.com/MattiooFR/claude-sessions.git
+cd claude-sessions
 ```
 
 2. Rendre le script exécutable (si ce n'est pas déjà fait) :
