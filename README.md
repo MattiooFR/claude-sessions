@@ -1,6 +1,8 @@
 # Claude Sessions
 
-Gestionnaire de sessions Claude Code pour iTerm2 sur macOS.
+> **macOS uniquement** | **Claude Code** | **iTerm2**
+
+Gestionnaire de sessions [Claude Code](https://docs.anthropic.com/en/docs/claude-code) pour [iTerm2](https://iterm2.com/) sur macOS.
 
 Permet de lister, sauvegarder, tuer et restaurer des sessions Claude Code actives dans iTerm2.
 
