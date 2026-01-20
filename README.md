@@ -1,5 +1,103 @@
 # Claude Sessions
 
+> **macOS only** | **Claude Code** | **iTerm2**
+
+Session manager for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) on [iTerm2](https://iterm2.com/) for macOS.
+
+List, save, kill, and restore active Claude Code sessions in iTerm2.
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/MattiooFR/claude-sessions.git
+cd claude-sessions
+```
+
+2. Make the script executable (if not already):
+```bash
+chmod +x claude-sessions
+```
+
+3. Create a symbolic link to use the command globally:
+```bash
+# Option 1: In /usr/local/bin (recommended)
+sudo ln -s "$(pwd)/claude-sessions" /usr/local/bin/claude-sessions
+
+# Option 2: In ~/.local/bin (no sudo, make sure this folder is in your PATH)
+mkdir -p ~/.local/bin
+ln -s "$(pwd)/claude-sessions" ~/.local/bin/claude-sessions
+```
+
+4. Verify the installation:
+```bash
+claude-sessions help
+```
+
+## Usage
+
+### List active sessions
+
+```bash
+# Sessions in the current iTerm2 window
+claude-sessions list
+
+# Sessions in all iTerm2 windows
+claude-sessions list --all
+```
+
+### Save sessions
+
+```bash
+# Save sessions from the current window
+claude-sessions save
+
+# Save all sessions
+claude-sessions save --all
+```
+
+Each session receives a unique identifier via Claude Code's `/rename` command. Sessions are stored in `~/.claude/saved-sessions.json`.
+
+### Kill sessions
+
+```bash
+# Kill sessions in the current window (auto-saves before killing)
+claude-sessions kill
+
+# Kill all sessions
+claude-sessions kill --all
+```
+
+### Restore sessions
+
+```bash
+claude-sessions restore
+```
+
+Opens a new iTerm2 tab for each saved session and runs `claude --resume <session-id>`.
+
+## Requirements
+
+- macOS
+- iTerm2
+- Claude Code CLI
+- `jq` (for JSON parsing)
+
+```bash
+brew install jq
+```
+
+## How it works
+
+1. **List**: Finds `claude` processes attached to iTerm2 TTYs
+2. **Save**: Sends `/rename <id>` to each session via AppleScript
+3. **Kill**: Saves then sends SIGTERM to Claude processes
+4. **Restore**: Opens tabs and runs `claude --resume <id>`
+
+---
+
+# Claude Sessions (Français)
+
 > **macOS uniquement** | **Claude Code** | **iTerm2**
 
 Gestionnaire de sessions [Claude Code](https://docs.anthropic.com/en/docs/claude-code) pour [iTerm2](https://iterm2.com/) sur macOS.
